@@ -3,6 +3,7 @@
 #include <time.h>
 #include <unistd.h>
 
+#include "util.h"
 #include "board.h"
 #include "colorflood.h"
 
@@ -13,8 +14,7 @@ main(int argc, char *argv[])
 	Board b;
 
 	if (argc != 2) {
-		fprintf(stderr, "usage: %s <board-size>\n", argv[0]);
-		return (1);
+		die("usage: %s <board-size>", argv[0]);
 	}
 
 	srand((uint)time(NULL) + (uint)getpid());
@@ -23,5 +23,5 @@ main(int argc, char *argv[])
 	board_print(&b);
 	board_free(&b);
 
-	return (0);
+	return (EXIT_SUCCESS);
 }

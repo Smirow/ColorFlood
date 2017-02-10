@@ -4,19 +4,10 @@
 #define _BOARD_H_
 
 
-#define true  1;
-#define false 0;
-
-typedef signed   char  bool;
-typedef unsigned char  uchar;
-typedef unsigned short ushort;
-typedef unsigned int   uint;
-typedef unsigned long  ulong;
-
-#define  COLOR_NUMBER    (6)
-#define  MAX_BOARD_SIZE  (64)
-#define  MAX_GRID_LEN    (MAX_BOARD_SIZE * MAX_BOARD_SIZE)
-#define  XY(x, y)        (((y) * (b->size)) + (x))
+#define COLOR_NUMBER   (6)
+#define MAX_BOARD_SIZE (64)
+#define MAX_GRID_LEN   (MAX_BOARD_SIZE * MAX_BOARD_SIZE)
+#define XY(x, y)       (((y) * (b->size)) + (x))
 
 enum { R, G, Y, B, M, C };
 
