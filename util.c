@@ -1,6 +1,8 @@
+#include <ctype.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "util.h"
 
@@ -26,4 +28,19 @@ xmalloc(const size_t size)
 	}
 
 	return (p);
+}
+
+int
+xatoi(const char *s)
+{
+	int i;
+	const int len = strlen(s);
+
+	for (i = 0; i < len; i++) {
+		if (!isdigit(s[i])) {
+			die("%s: %s: not a valid number", __func__, s);
+		}
+	}
+
+	return (atoi(s));
 }

@@ -4,7 +4,6 @@
 #define _COLORFLOOD_H_
 
 
-int catoi(const char *s);
 int main(const int argc, const char *argv[]);
 
 
