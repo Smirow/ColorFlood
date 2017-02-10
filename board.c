@@ -13,7 +13,7 @@
 #define RESET   "\033[0m"
 
 static void
-color_uchar_print(uchar c)
+color_uchar_print(const uchar c)
 {
 	switch (c) {
 	case R:
@@ -40,7 +40,7 @@ color_uchar_print(uchar c)
 }
 
 void
-board_init(Board *b, int size)
+board_init(Board *b, const int size)
 {
 	int i, len;
 
@@ -55,7 +55,7 @@ board_init(Board *b, int size)
 }
 
 void
-board_print(Board *b)
+board_print(const Board *b)
 {
 	int i, j, k;
 
@@ -82,7 +82,7 @@ board_print(Board *b)
 }
 
 void
-board_free(Board *b)
+board_free(const Board *b)
 {
 	free(b->grid);
 }

@@ -26,9 +26,9 @@ typedef struct {
 } Board;
 
 /* fonctions de base du plateau */
-void board_init(Board *b, int size);
-void board_print(Board *b);
-void board_free(Board *b);
+void board_init(Board *b, const int size);
+void board_print(const Board *b);
+void board_free(const Board *b);
 
 
 #endif /* _BOARD_H_ */
