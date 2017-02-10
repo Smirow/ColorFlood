@@ -13,7 +13,7 @@
 #define RESET   "\033[0m"
 
 static void
-term_color_print(uchar c)
+color_uchar_print(uchar c)
 {
 	switch (c) {
 	case R:
@@ -63,10 +63,10 @@ board_print(Board *b)
 
 	for (i = 0; i < k; i++) {
 		for (j = 0; j < k; j++) {
-			term_color_print(b->grid[XY(i, j)]);
+			color_uchar_print(b->grid[XY(i, j)]);
 			printf("|");
 		}
-		term_color_print(b->grid[XY(i, j)]);
+		color_uchar_print(b->grid[XY(i, j)]);
 		printf("\n");
 		for (j = 0; j < k; j++) {
 			printf("--");
@@ -74,10 +74,10 @@ board_print(Board *b)
 		printf("-\n");
 	}
 	for (j = 0; j < k; j++) {
-		term_color_print(b->grid[XY(i, j)]);
+		color_uchar_print(b->grid[XY(i, j)]);
 		printf("|");
 	}
-	term_color_print(b->grid[XY(i, j)]);
+	color_uchar_print(b->grid[XY(i, j)]);
 	printf("\n");
 }
 
