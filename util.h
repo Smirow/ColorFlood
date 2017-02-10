@@ -14,6 +14,7 @@ typedef unsigned int   uint;
 typedef unsigned long  ulong;
 
 void die(const char *fmt, ...);
+void *xmalloc(const size_t size);
 
 
 #endif /* _UTIL_H_ */

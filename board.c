@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
 
 #include "util.h"
 #include "board.h"
@@ -36,6 +38,7 @@ color_uchar_print(const uchar c)
 		printf(CYAN "C" RESET);
 		break;
 	default:
+		die("%s: 0x%02x: unexpected color", __func__, c);
 		break;
 	}
 }
@@ -45,10 +48,16 @@ board_init(Board *b, const int size)
 {
 	int i, len;
 
+	if ((size < 2) || (size > MAX_BOARD_SIZE)) {
+		die("%s: %d: size should be between 2 and %d",
+		    __func__, size, MAX_BOARD_SIZE);
+	}
+
 	len = size * size;
+	srand((uint)time(NULL) + (uint)getpid());
 
 	b->size = size;
-	b->grid = (uchar *)malloc(len * sizeof(uchar));
+	b->grid = (uchar *)xmalloc(len * sizeof(uchar));
 
 	for (i = 0; i < len; i++) {
 		b->grid[i] = rand() % COLOR_NUMBER;

@@ -15,3 +15,15 @@ die(const char *fmt, ...)
 	va_end(ap);
 	exit(EXIT_FAILURE);
 }
+
+void *
+xmalloc(const size_t size)
+{
+	void *p = malloc(size);
+
+	if (!p) {
+		die("malloc: out of memory");
+	}
+
+	return (p);
+}
