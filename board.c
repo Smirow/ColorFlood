@@ -1,3 +1,13 @@
+/**
+ * \file board.c
+ * \brief Plateau de jeu.
+ * \author Équipe 4
+ * \version 0.1
+ * \date février 2017
+ *
+ * Bibliothèque pour gérer un plateau de jeu carré avec 6 couleurs.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -99,7 +109,7 @@ do { \
 					b->grid[XY(x, y)] = C;
 					x++;
 					break;
-				case '\r': /* TODO : portabilité Mac + Windows */
+				case '\r': /* TODO : portabilité Windows */
 				case '\n':
 					if (b->size < 0) {
 						b->size = x;
