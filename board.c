@@ -46,6 +46,85 @@ color_uchar_print(const uchar c)
 void
 board_stream_init(const int fd, Board *b)
 {
+	int i, j, x, y;
+	char buffer[BOARD_BUFLEN];
+
+	x = y = 0;
+
+	b->size = -1;
+	b->grid = (uchar *)xmalloc(MAX_BOARD_SIZE * sizeof(uchar));
+
+#define CHECK_SQUARE_SIZE(z) \
+do { \
+	if (((b->size < 0) && ((z) >= MAX_BOARD_SIZE)) || \
+	    ((b->size > 0) && ((z) >= b->size))) { \
+		die("%s: not a square board", __func__); \
+	} \
+} while (0)
+
+	do {
+		j = read(fd, buffer, BOARD_BUFLEN);
+		if (j < 0) {
+			die("%s: read: stream error", __func__);
+		} else {
+			for (i = 0; i < j; i++) {
+				switch (buffer[i]) {
+				case 'R':
+					CHECK_SQUARE_SIZE(x);
+					b->grid[XY(x, y)] = R;
+					x++;
+					break;
+				case 'G':
+					CHECK_SQUARE_SIZE(x);
+					b->grid[XY(x, y)] = G;
+					x++;
+					break;
+				case 'Y':
+					CHECK_SQUARE_SIZE(x);
+					b->grid[XY(x, y)] = Y;
+					x++;
+					break;
+				case 'B':
+					CHECK_SQUARE_SIZE(x);
+					b->grid[XY(x, y)] = B;
+					x++;
+					break;
+				case 'M':
+					CHECK_SQUARE_SIZE(x);
+					b->grid[XY(x, y)] = M;
+					x++;
+					break;
+				case 'C':
+					CHECK_SQUARE_SIZE(x);
+					b->grid[XY(x, y)] = C;
+					x++;
+					break;
+				case '\r': /* TODO : portabilité Mac + Windows */
+				case '\n':
+					if (b->size < 0) {
+						b->size = x;
+						b->grid = (uchar *)xrealloc((x * x) * sizeof(uchar));
+					}
+					if ((x != b->size) || (b->size == 0)) {
+						die("%s: not a square board", __func__);
+					}
+					CHECK_SQUARE_SIZE(y);
+					x = 0;
+					y++;
+					break;
+				case ' ':
+					break;
+				default:
+					die("%s: 0x%02x: unexpected color", __func__, buffer[i]);
+					break;
+				}
+			}
+		}
+	} while (j > 0);
+
+	if (y != b->size) {
+		die("%s: not a square board", __func__);
+	}
 
 }
 
@@ -73,16 +152,16 @@ board_random_init(Board *b, const int size)
 void
 board_print(const Board *b)
 {
-	int i, j, k;
+	int i, x, y;
 
-	k = b->size - 1;
+	i = b->size - 1;
 
-	for (i = 0; i < b->size; i++) {
-		for (j = 0; j < k; j++) {
-			color_uchar_print(b->grid[XY(i, j)]);
+	for (y = 0; y < b->size; y++) {
+		for (x = 0; x < i; x++) {
+			color_uchar_print(b->grid[XY(x, y)]);
 			printf(" ");
 		}
-		color_uchar_print(b->grid[XY(i, j)]);
+		color_uchar_print(b->grid[XY(x, y)]);
 		printf("\n");
 	}
 }
