@@ -6,19 +6,21 @@ Le `main` se trouve dans `colorflood.c`.
 
 Les choses à faire sont dans `game.c` et `game.h`.
 
-## Utilisation
+## Installation
 
-```sh
+``sh
 git clone https://github.com/theobk/ColorFlood.git
 cd ColorFlood
 make
-```
+``
 
-```sh
+## Utilisation
+
+``sh
 usage: colorflood [OPTION] < FILE
   -f <file>
   -s <size>
-```
+``
 
 ## Coding Style
 
