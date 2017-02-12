@@ -4,11 +4,12 @@
 #define _BOARD_H_
 
 
-#define COLOR_NUMBER   (6)
-#define MAX_BOARD_SIZE (64)
+#define COLOR_NUMBER   6
+#define DEFAULT_SIZE   16
+#define MAX_BOARD_SIZE 64
 #define MAX_GRID_LEN   (MAX_BOARD_SIZE * MAX_BOARD_SIZE) /* 4096 */
 #define XY(x, y)       (((y) * (b->size)) + (x))
-#define BOARD_BUFLEN   (4096)
+#define BOARD_BUFLEN   4096
 
 enum { R, G, Y, B, M, C };
 

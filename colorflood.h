@@ -4,6 +4,7 @@
 #define _COLORFLOOD_H_
 
 
+void usage(void);
 int main(const int argc, const char *argv[]);
 
 
