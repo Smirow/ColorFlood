@@ -18,6 +18,7 @@ typedef struct {
 
 /* fonctions de base du plateau */
 void board_random_init(Board *b, const int size);
+void board_stream_init(const int fd, Board *b);
 void board_print(const Board *b);
 void board_free(const Board *b);
 

@@ -4,6 +4,8 @@ Pour comprendre le code, commencez par lire `board.h`.
 
 Le `main` se trouve dans `colorflood.c`.
 
+Les choses à faire sont dans `game.c` et `game.h`.
+
 ## Coding Style
 
 Le style doit rester constant, aligné et harmonieux :

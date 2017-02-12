@@ -44,6 +44,12 @@ color_uchar_print(const uchar c)
 }
 
 void
+board_stream_init(const int fd, Board *b)
+{
+
+}
+
+void
 board_random_init(Board *b, const int size)
 {
 	int i, len;

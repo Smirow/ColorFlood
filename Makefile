@@ -8,7 +8,7 @@ LDFLAGS  =
 #LDFLAGS  = -static -s -lSDL
 
 BIN = colorflood
-OBJS = util.o board.o colorflood.o
+OBJS = util.o board.o game.o colorflood.o
 
 all: options $(BIN)
 
