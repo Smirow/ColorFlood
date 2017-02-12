@@ -14,7 +14,7 @@ main(const int argc, const char *argv[])
 		die("usage: %s <board-size>", argv[0]);
 	}
 
-	board_init(&b, xatoi(argv[1]));
+	board_random_init(&b, xatoi(argv[1]));
 	board_print(&b);
 	board_free(&b);
 

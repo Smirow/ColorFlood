@@ -44,7 +44,7 @@ color_uchar_print(const uchar c)
 }
 
 void
-board_init(Board *b, const int size)
+board_random_init(Board *b, const int size)
 {
 	int i, len;
 
@@ -71,24 +71,14 @@ board_print(const Board *b)
 
 	k = b->size - 1;
 
-	for (i = 0; i < k; i++) {
+	for (i = 0; i < b->size; i++) {
 		for (j = 0; j < k; j++) {
 			color_uchar_print(b->grid[XY(i, j)]);
-			printf("|");
+			printf(" ");
 		}
 		color_uchar_print(b->grid[XY(i, j)]);
 		printf("\n");
-		for (j = 0; j < k; j++) {
-			printf("--");
-		}
-		printf("-\n");
 	}
-	for (j = 0; j < k; j++) {
-		color_uchar_print(b->grid[XY(i, j)]);
-		printf("|");
-	}
-	color_uchar_print(b->grid[XY(i, j)]);
-	printf("\n");
 }
 
 void

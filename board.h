@@ -6,7 +6,7 @@
 
 #define COLOR_NUMBER   (6)
 #define MAX_BOARD_SIZE (64)
-#define MAX_GRID_LEN   (MAX_BOARD_SIZE * MAX_BOARD_SIZE)
+#define MAX_GRID_LEN   (MAX_BOARD_SIZE * MAX_BOARD_SIZE) /* 4096 */
 #define XY(x, y)       (((y) * (b->size)) + (x))
 
 enum { R, G, Y, B, M, C };
@@ -17,7 +17,7 @@ typedef struct {
 } Board;
 
 /* fonctions de base du plateau */
-void board_init(Board *b, const int size);
+void board_random_init(Board *b, const int size);
 void board_print(const Board *b);
 void board_free(const Board *b);
 
