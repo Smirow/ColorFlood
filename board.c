@@ -103,7 +103,7 @@ do { \
 				case '\n':
 					if (b->size < 0) {
 						b->size = x;
-						b->grid = (uchar *)xrealloc((x * x) * sizeof(uchar));
+						b->grid = (uchar *)xrealloc(b->grid, (x * x) * sizeof(uchar));
 					}
 					if ((x != b->size) || (b->size == 0)) {
 						die("%s: not a square board", __func__);

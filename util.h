@@ -15,7 +15,8 @@ typedef unsigned long  ulong;
 
 void die(const char *fmt, ...);
 void *xmalloc(const size_t size);
-int xatoi(const char *s);
+void *xrealloc(void *ptr, const size_t size);
+int xatoi(const char *str);
 
 
 #endif /* _UTIL_H_ */

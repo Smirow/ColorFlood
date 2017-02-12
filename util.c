@@ -21,26 +21,38 @@ die(const char *fmt, ...)
 void *
 xmalloc(const size_t size)
 {
-	void *p = malloc(size);
+	void *ptr = malloc(size);
 
-	if (!p) {
+	if (!ptr) {
 		die("malloc: out of memory");
 	}
 
-	return (p);
+	return (ptr);
+}
+
+void *
+xrealloc(void *ptr, const size_t size)
+{
+	ptr = realloc(ptr, size);
+
+	if (!ptr) {
+		die("realloc: out of memory");
+	}
+
+	return (ptr);
 }
 
 int
-xatoi(const char *s)
+xatoi(const char *str)
 {
 	int i;
-	const int len = strlen(s);
+	const int len = strlen(str);
 
 	for (i = 0; i < len; i++) {
-		if (!isdigit(s[i])) {
-			die("%s: %s: not a valid number", __func__, s);
+		if (!isdigit(str[i])) {
+			die("%s: %s: not a valid number", __func__, str);
 		}
 	}
 
-	return (atoi(s));
+	return (atoi(str));
 }
