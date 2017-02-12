@@ -8,19 +8,19 @@ Les choses à faire sont dans `game.c` et `game.h`.
 
 ## Installation
 
-``sh
+```sh
 git clone https://github.com/theobk/ColorFlood.git
 cd ColorFlood
 make
-``
+```
 
 ## Utilisation
 
-``sh
-usage: colorflood [OPTION] < FILE
+```sh
+usage: ./colorflood [OPTION] < FILE
   -f <file>
   -s <size>
-``
+```
 
 ## Coding Style
 
