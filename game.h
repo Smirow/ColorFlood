@@ -4,7 +4,7 @@
 #define _GAME_H_
 
 
-/*** TODO ***/
+int TrouverLaComposante4Connexe(Board *b, uchar *tab[2]);
 
 
 #endif /* _GAME_H_ */
